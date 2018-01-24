@@ -164,16 +164,22 @@ public class BinaryTree {
 	 */
 	public Node searchNode(Node n, char c) {
 
+		Node result = null;
+
 		if(n != null) {
-			if(n._char == c) { return n; }
-			if(this.searchNode(n._leftChild, c) != null) {
-				return this.searchNode(n._leftChild, c);
+
+			if(n._char == c) {
+				return n;
 			}
-			if(this.searchNode(n._rightChild, c) != null) {
-				return this.searchNode(n._rightChild, c);
+
+			result = this.searchNode(n._leftChild, c);
+
+			if(result == null) {
+				result = this.searchNode(n._rightChild, c);
 			}
 		}
-		return null;
+
+		return result;
 	}
 
 
@@ -243,6 +249,7 @@ public class BinaryTree {
     public static void main(String[] args) {
 		BinaryTree bt = new BinaryTree(args[0]);
 		bt.buildTree();
+		//System.out.println(bt.searchNode(bt._root, args[1].toCharArray()[0]));
 		System.out.println(bt.encodeString(args[1]));
     }
 
