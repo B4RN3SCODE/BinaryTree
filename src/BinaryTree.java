@@ -250,7 +250,11 @@ public class BinaryTree {
 		BinaryTree bt = new BinaryTree(args[0]);
 		bt.buildTree();
 		//System.out.println(bt.searchNode(bt._root, args[1].toCharArray()[0]));
-		System.out.println(bt.encodeString(args[1]));
+		if(args.length < 2) {
+			System.out.println(bt.encodeString(bt._phrase));
+		} else {
+			System.out.println(bt.encodeString(args[1]));
+		}
     }
 
 }
